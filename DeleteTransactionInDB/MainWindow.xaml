@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeleteTransactionInDB"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Удаление зависших транзакций" Height="250" Width="500" 
+        WindowStyle="ToolWindow" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Label VerticalAlignment="Top" Height="40" Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="20">Удаление зависших транзакций</Label>
+        <Button x:Name="withNumber" Margin="-6,64,0,113" Height="50" 
+                VerticalAlignment="Center" 
+                FontSize="20" HorizontalAlignment="Center" Width="450" Click="withNumber_Click">
+            Удаление зависшей транзакции с номером
+        </Button>
+        <Button x:Name="withoutNumber" Margin="0,0,0,-100" HorizontalAlignment="Center" 
+                Width="450" Height="50" 
+                VerticalAlignment="Center" 
+                FontSize="20">
+            Удаление зависшей транзакции без номера
+        </Button>
     </Grid>
 </Window>

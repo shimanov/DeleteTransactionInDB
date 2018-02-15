@@ -1,0 +1,34 @@
+﻿<Window x:Class="DeleteTransactionInDB.DeleteTransaction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeleteTransactionInDB"
+        mc:Ignorable="d"
+        Title="DeleteTransaction" Height="441" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5,5,5,10" FontSize="20">Введите номер зависшей транзакции</Label>
+        <TextBox x:Name="numberTbx" HorizontalAlignment="Stretch" Height="40" 
+                 Margin="10,47,10,0" TextWrapping="Wrap" 
+                 Text="Прод092765" VerticalAlignment="Top"
+                 TextAlignment="Center" 
+                 FontSize="25"
+                 ToolTip="Введите номер зависшей проводки из 'Сверки транзакций'"
+                 BorderThickness="2"
+                 BorderBrush="Black"/>
+        <Button x:Name="searchBtn" Height="50" Width="350" Margin="0,92,0,271" Click="searchBtn_Click">Поиск транзакции</Button>
+        <ListView x:Name="resultLst" VerticalContentAlignment="Bottom" Margin="0,147,0,60" Width="580">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding TRANSACTIONID}"/>
+                    <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding TERMINAL}"/>
+                    <GridViewColumn Header="Дата создания" Width="170" DisplayMemberBinding="{Binding CREATEDDATE}" />
+                    <GridViewColumn Header="Сумма" Width="170" DisplayMemberBinding="{Binding PAYMENTAMOUNT}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

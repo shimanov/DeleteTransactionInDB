@@ -24,5 +24,11 @@ namespace DeleteTransactionInDB
         {
             InitializeComponent();
         }
+
+        private void withNumber_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteTransaction deleteTransaction = new DeleteTransaction();
+            deleteTransaction.Show();
+        }
     }
 }
