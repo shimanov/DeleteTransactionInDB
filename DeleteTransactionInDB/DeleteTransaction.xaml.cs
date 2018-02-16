@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace DeleteTransactionInDB
 {
@@ -12,6 +13,7 @@ namespace DeleteTransactionInDB
     public partial class DeleteTransaction : Window
     {
         static string connectionString = @"Data Source=R54-633203-N; Initial Catalog=DB633203; user id=sa;password=Admin123";
+        DataContext dataContext = new DataContext(connectionString);
 
         public DeleteTransaction()
         {
@@ -20,37 +22,52 @@ namespace DeleteTransactionInDB
 
         private void searchBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext dataContext = new DataContext(connectionString);
-            Retailtransactiontable retailtransactiontable = new Retailtransactiontable();
-
-            string tbxResult = numberTbx.Text;
-
-            if (tbxResult != string.Empty)
+            if (numberTbx.Text != string.Empty)
             {
                 var result = dataContext.GetTable<Retailtransactiontable>()
                 .ToList()
-                .Where(r => r.RECEIPTID == tbxResult); //"Прод092765"
+                .Where(r => r.RECEIPTID == numberTbx.Text); //"Прод092765"
 
-                foreach (var item in result)
-                {
-                    resultLst.Items.Add(new Retailtransactiontable
+                    foreach (var item in result)
                     {
-                        //Номер транзакции
-                        TRANSACTIONID = item.TRANSACTIONID,
-                        //Номер терминала
-                        TERMINAL = item.TERMINAL,
-                        //Дата создания
-                        CREATEDDATE = item.CREATEDDATE,
-                        //Сумма платежа
-                        PAYMENTAMOUNT = item.PAYMENTAMOUNT
-                    });
-                }
+                        resultLst.Items.Add(new Retailtransactiontable
+                        {
+                            //Номер транзакции
+                            RECEIPTID = item.RECEIPTID,
+                            //Номер терминала
+                            TERMINAL = item.TERMINAL,
+                            //Дата создания
+                            CREATEDDATE = item.CREATEDDATE,
+                            //Сумма платежа
+                            PAYMENTAMOUNT = item.PAYMENTAMOUNT
+                        });
+                    }
+                deleteBtn.Visibility = Visibility.Visible;
             }
             else
             {
                 MessageBox.Show("Не введен номер зависшей транзакции");
             }
             
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var result = dataContext.GetTable<Retailtransactiontable>()
+                .ToList()
+                .Where(r => r.RECEIPTID == numberTbx.Text);
+
+            if (result != null)
+            {
+                dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
+                dataContext.SubmitChanges();
+                resultLst.Items.Clear();
+                MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
+            }
+            else
+            {
+                MessageBox.Show("Транзакция не удалена");
+            }
         }
     }
 }

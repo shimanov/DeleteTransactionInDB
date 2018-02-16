@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeleteTransactionInDB"
         mc:Ignorable="d"
-        Title="DeleteTransaction" Height="441" Width="600"
+        Title="DeleteTransaction" Height="450" Width="600"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
-    <Grid>
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Hidden">
         <Label VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5,5,5,10" FontSize="20">Введите номер зависшей транзакции</Label>
         <TextBox x:Name="numberTbx" HorizontalAlignment="Stretch" Height="40" 
-                 Margin="10,47,10,0" TextWrapping="Wrap" 
-                 Text="Прод092765" VerticalAlignment="Top"
+                 Margin="10,47,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
                  TextAlignment="Center" 
                  FontSize="25"
                  ToolTip="Введите номер зависшей проводки из 'Сверки транзакций'"
@@ -22,13 +21,15 @@
         <ListView x:Name="resultLst" VerticalContentAlignment="Bottom" Margin="0,147,0,60" Width="580">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding TRANSACTIONID}"/>
+                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding RECEIPTID}"/>
                     <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding TERMINAL}"/>
                     <GridViewColumn Header="Дата создания" Width="170" DisplayMemberBinding="{Binding CREATEDDATE}" />
                     <GridViewColumn Header="Сумма" Width="170" DisplayMemberBinding="{Binding PAYMENTAMOUNT}" />
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <Button x:Name="deleteBtn" Height="50" Width="350" 
+                VerticalAlignment="Bottom" Margin="0,0,0,5" 
+                Click="deleteBtn_Click" Visibility="Hidden">Удалить транзакцию</Button>
     </Grid>
 </Window>

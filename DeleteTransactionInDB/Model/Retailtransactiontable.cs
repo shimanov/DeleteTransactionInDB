@@ -6,7 +6,7 @@ namespace DeleteTransactionInDB.Model
     [Table(Name = "RETAILTRANSACTIONTABLE")]
     public class Retailtransactiontable
     {
-        [Column]
+        [Column(IsPrimaryKey = true)]
         public string TRANSACTIONID { get; set; }
 
         [Column]
@@ -15,10 +15,10 @@ namespace DeleteTransactionInDB.Model
         [Column]
         public string RECEIPTID { get; set; }
 
-        [Column]
+        [Column(IsPrimaryKey = true)]
         public string STORE { get; set; }
 
-        [Column]
+        [Column(IsPrimaryKey = true)]
         public string TERMINAL { get; set; }
 
         [Column]
@@ -168,7 +168,7 @@ namespace DeleteTransactionInDB.Model
         [Column]
         public string CREATEDBY { get; set; }
 
-        [Column]
+        [Column(IsPrimaryKey = true)]
         public string DATAAREAID { get; set; }
 
         [Column]
