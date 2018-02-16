@@ -76,6 +76,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\GmTransaction.cs" />
+    <Compile Include="Model\RetailTransactionSalesTrans.cs" />
     <Compile Include="Model\Retailtransactiontable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
