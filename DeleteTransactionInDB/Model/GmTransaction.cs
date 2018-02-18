@@ -19,16 +19,16 @@ namespace DeleteTransactionInDB.Model
         public int  TransactionType { get; set; }
 
         [Column]
-        public string EmplID { get; set; }
+        public string EmplId { get; set; }
 
         [Column]
         public decimal NetAmount { get; set; }
 
         [Column(IsPrimaryKey = true)]
-        public string STOREID { get; set; }
+        public string Storeid { get; set; }
 
         [Column(IsPrimaryKey = true)]
-        public string TERMINALID { get; set; }
+        public string Terminalid { get; set; }
 
         [Column(IsPrimaryKey = true)]
         public string DataAreaId { get; set; }

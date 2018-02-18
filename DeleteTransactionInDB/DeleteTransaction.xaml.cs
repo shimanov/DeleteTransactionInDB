@@ -12,8 +12,8 @@ namespace DeleteTransactionInDB
     /// </summary>
     public partial class DeleteTransaction : Window
     {
-        static string connectionString = @"Data Source=R54-633203-N; Initial Catalog=DB633203; user id=sa;password=Admin123";
-        DataContext dataContext = new DataContext(connectionString);
+        static string _connectionString = @"Data Source=R54-633203-N; Initial Catalog=DB633203; user id=sa;password=Admin123";
+        DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()
         {
@@ -24,22 +24,22 @@ namespace DeleteTransactionInDB
         {
             if (numberTbx.Text != string.Empty)
             {
-                var result = dataContext.GetTable<Retailtransactiontable>()
+                var result = _dataContext.GetTable<Retailtransactiontable>()
                 .ToList()
-                .Where(r => r.RECEIPTID == numberTbx.Text); //"Прод092765"
+                .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
 
                     foreach (var item in result)
                     {
                         resultLst.Items.Add(new Retailtransactiontable
                         {
                             //Номер транзакции
-                            RECEIPTID = item.RECEIPTID,
+                            Receiptid = item.Receiptid,
                             //Номер терминала
-                            TERMINAL = item.TERMINAL,
+                            Terminal = item.Terminal,
                             //Дата создания
-                            CREATEDDATE = item.CREATEDDATE,
+                            Createddate = item.Createddate,
                             //Сумма платежа
-                            PAYMENTAMOUNT = item.PAYMENTAMOUNT
+                            Paymentamount = item.Paymentamount
                         });
                     }
                 deleteBtn.Visibility = Visibility.Visible;
@@ -53,14 +53,14 @@ namespace DeleteTransactionInDB
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            var result = dataContext.GetTable<Retailtransactiontable>()
+            var result = _dataContext.GetTable<Retailtransactiontable>()
                 .ToList()
-                .Where(r => r.RECEIPTID == numberTbx.Text);
+                .Where(r => r.Receiptid == numberTbx.Text);
 
             if (result != null)
             {
-                dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
-                dataContext.SubmitChanges();
+                _dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
+                _dataContext.SubmitChanges();
                 resultLst.Items.Clear();
                 MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
             }

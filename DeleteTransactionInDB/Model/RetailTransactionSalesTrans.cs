@@ -6,329 +6,329 @@ namespace DeleteTransactionInDB.Model
     [Table(Name = "RETAILTRANSACTIONSALESTRANS")]
     public class RetailTransactionSalesTrans
     {
-        [Column(IsPrimaryKey = true)]
-        public string TRANSACTIONID { get; set; }
+        [Column(IsPrimaryKey = true, Name = "TRANSACTIONID")]
+        public string Transactionid { get; set; }
 
-        [Column(IsPrimaryKey = true)]
-        public decimal LINENUM { get; set; }
+        [Column(IsPrimaryKey = true, Name = "LINENUM")]
+        public decimal Linenum { get; set; }
 
-        [Column]
-        public string RECEIPTID { get; set; }
+        [Column(Name = "RECEIPTID")]
+        public string Receiptid { get; set; }
 
-        [Column]
-        public string BARCODE { get; set; }
+        [Column(Name = "BARCODE")]
+        public string Barcode { get; set; }
 
-        [Column]
-        public string ITEMID { get; set; }
+        [Column(Name = "ITEMID")]
+        public string Itemid { get; set; }
 
-        [Column]
-        public string ITEMDEPARTMENTID { get; set; }
+        [Column(Name = "ITEMDEPARTMENTID")]
+        public string Itemdepartmentid { get; set; }
 
-        [Column]
-        public string ITEMGROUPID { get; set; }
+        [Column(Name = "ITEMGROUPID")]
+        public string Itemgroupid { get; set; }
 
-        [Column]
-        public decimal PRICE { get; set; }
+        [Column(Name = "PRICE")]
+        public decimal Price { get; set; }
 
-        [Column]
-        public decimal NETPRICE { get; set; }
+        [Column(Name = "NETPRICE")]
+        public decimal Netprice { get; set; }
 
-        [Column]
-        public decimal QTY { get; set; }
-
-        [Column]
-        public string TAXGROUP { get; set; }
+        [Column(Name = "QTY")]
+        public decimal Qty { get; set; }
 
         [Column]
-        public int TRANSACTIONSTATUS { get; set; }
+        public string Taxgroup { get; set; }
 
         [Column]
-        public decimal DISCAMOUNT { get; set; }
+        public int Transactionstatus { get; set; }
 
         [Column]
-        public decimal COSTAMOUNT { get; set; }
+        public decimal Discamount { get; set; }
 
         [Column]
-        public DateTime TRANSDATE { get; set; }
+        public decimal Costamount { get; set; }
 
         [Column]
-        public int TRANSTIME { get; set; }
+        public DateTime Transdate { get; set; }
 
         [Column]
-        public string SHIFT { get; set; }
+        public int Transtime { get; set; }
 
         [Column]
-        public DateTime SHIFTDATE { get; set; }
+        public string Shift { get; set; }
 
         [Column]
-        public decimal NETAMOUNT { get; set; }
+        public DateTime Shiftdate { get; set; }
 
         [Column]
-        public string DISCOFFERID { get; set; }
+        public decimal Netamount { get; set; }
 
         [Column]
-        public string DISCGROUPID { get; set; }
+        public string Discofferid { get; set; }
 
         [Column]
-        public decimal STDNETPRICE { get; set; }
+        public string Discgroupid { get; set; }
 
         [Column]
-        public decimal DISCAMOUNTFROMSTDPRICE { get; set; }
+        public decimal Stdnetprice { get; set; }
 
         [Column]
-        public string STATEMENTID { get; set; }
+        public decimal Discamountfromstdprice { get; set; }
 
         [Column]
-        public string CUSTACCOUNT { get; set; }
+        public string Statementid { get; set; }
 
         [Column]
-        public string SECTION { get; set; }
+        public string Custaccount { get; set; }
+
+        [Column]
+        public string Section { get; set; }
         
         [Column]
-        public string SHELF { get; set; }
+        public string Shelf { get; set; }
 
         [Column]
-        public string STATEMENTCODE { get; set; }
+        public string Statementcode { get; set; }
 
         [Column]
-        public int TRANSACTIONCODE { get; set; }
-
-        [Column(IsPrimaryKey = true)]
-        public string STORE { get; set; }
-
-        [Column]
-        public int ITEMIDSCANNED { get; set; }
-
-        [Column]
-        public int KEYBOARDITEMENTRY { get; set; }
-
-        [Column]
-        public int PRICEINBARCODE { get; set; }
-
-        [Column]
-        public int PRICECHANGE { get; set; }
-
-        [Column]
-        public int WEIGHTMANUALLYENTERED { get; set; }
-
-        [Column]
-        public int LINEWASDISCOUNTED { get; set; }
-
-        [Column]
-        public int SCALEITEM { get; set; }
-
-        [Column]
-        public int WEIGHTITEM { get; set; }
-
-        [Column]
-        public int RETURNNOSALE { get; set; }
-
-        [Column]
-        public int ITEMCORRECTEDLINE { get; set; }
-
-        [Column]
-        public int SALESTYPE { get; set; }
-
-        [Column]
-        public int LINKEDITEMNOTORIGINAL { get; set; }
-
-        [Column]
-        public int ORIGINALOFLINKEDITEMLIST { get; set; }
+        public int Transactioncode { get; set; }
 
         [Column(IsPrimaryKey = true)]
-        public string TERMINALID { get; set; }
+        public string Store { get; set; }
 
         [Column]
-        public string STAFF { get; set; }
+        public int Itemidscanned { get; set; }
 
         [Column]
-        public string ITEMPOSTINGGROUP { get; set; }
+        public int Keyboarditementry { get; set; }
 
         [Column]
-        public decimal TOTALROUNDEDAMOUNT { get; set; }
+        public int Priceinbarcode { get; set; }
 
         [Column]
-        public int COUNTER { get; set; }
+        public int Pricechange { get; set; }
 
         [Column]
-        public int REPLICATIONCOUNTER { get; set; }
+        public int Weightmanuallyentered { get; set; }
 
         [Column]
-        public string VARIANTID { get; set; }
+        public int Linewasdiscounted { get; set; }
 
         [Column]
-        public decimal LINEDSCAMOUNT { get; set; }
+        public int Scaleitem { get; set; }
 
         [Column]
-        public int REPLICATED { get; set; }
+        public int Weightitem { get; set; }
 
         [Column]
-        public decimal CUSTDISCAMOUNT { get; set; }
+        public int Returnnosale { get; set; }
 
         [Column]
-        public decimal INFOCODEDISCAMOUNT { get; set; }
+        public int Itemcorrectedline { get; set; }
 
         [Column]
-        public decimal CUSTINVOICEDISCAMOUNT { get; set; }
+        public int Salestype { get; set; }
 
         [Column]
-        public string UNIT { get; set; }
+        public int Linkeditemnotoriginal { get; set; }
 
         [Column]
-        public decimal UNITQTY { get; set; }
-
-        [Column]
-        public decimal UNITPRICE { get; set; }
-
-        [Column]
-        public decimal TAXAMOUNT { get; set; }
-
-        [Column]
-        public decimal TOTALDISCAMOUNT { get; set; }
-
-        [Column]
-        public decimal TOTALDISCPCT { get; set; }
-
-        [Column]
-        public decimal TOTALDISCINFOCODELINENUM { get; set; }
-
-        [Column]
-        public int PERIODICDISCTYPE { get; set; }
-
-        [Column]
-        public decimal PERIODICDISCAMOUNT { get; set; }
-
-        [Column]
-        public decimal DISCOUNTAMOUNTFORPRINTING { get; set; }
-
-        [Column]
-        public string STAFFID { get; set; }
-
-        [Column]
-        public string PERIODICDISCGROUP { get; set; }
-
-        [Column]
-        public string INVENTTRANSID { get; set; }
-
-        [Column]
-        public string INVENTDIMID { get; set; }
-
-        [Column]
-        public string PURCHID { get; set; }
-
-        [Column]
-        public string FILELOGID { get; set; }
-
-        [Column]
-        public DateTime MODIFIEDDATE { get; set; }
-
-        [Column]
-        public int MODIFIEDTIME { get; set; }
-
-        [Column]
-        public string MODIFIEDBY { get; set; }
-
-        [Column]
-        public long MODIFIEDTRANSACTIONID { get; set; }
-
-        [Column]
-        public DateTime CREATEDDATE { get; set; }
-
-        [Column]
-        public int CREATEDTIME { get; set; }
-
-        [Column]
-        public string CREATEDBY { get; set; }
-
-        [Column]
-        public long CREATEDTRANSACTIONID { get; set; }
+        public int Originaloflinkeditemlist { get; set; }
 
         [Column(IsPrimaryKey = true)]
-        public string DATAAREAID { get; set; }
+        public string Terminalid { get; set; }
 
         [Column]
-        public string PRESCRIPTIONID { get; set; }
+        public string Staff { get; set; }
 
         [Column]
-        public string COMMENT { get; set; }
+        public string Itempostinggroup { get; set; }
 
         [Column]
-        public decimal LINEDISCPCT { get; set; }
+        public decimal Totalroundedamount { get; set; }
 
         [Column]
-        public decimal WHOLEDISCAMOUNTWITHTAX { get; set; }
+        public int Counter { get; set; }
 
         [Column]
-        public decimal TOTALDISCAMOUNTWITHTAX { get; set; }
+        public int Replicationcounter { get; set; }
 
         [Column]
-        public decimal LINEDISCAMOUNTWITHTAX { get; set; }
+        public string Variantid { get; set; }
 
         [Column]
-        public decimal PERIODICDISCAMOUNTWITHTAX { get; set; }
+        public decimal Linedscamount { get; set; }
 
         [Column]
-        public string INVENTBATCHID { get; set; }
+        public int Replicated { get; set; }
 
         [Column]
-        public int GIFTCARD { get; set; }
+        public decimal Custdiscamount { get; set; }
 
         [Column]
-        public string INVENTSERIALID { get; set; }
+        public decimal Infocodediscamount { get; set; }
 
         [Column]
-        public string RFIDTAGID { get; set; }
+        public decimal Custinvoicediscamount { get; set; }
 
         [Column]
-        public string RETURNTRANSACTIONID { get; set; }
+        public string Unit { get; set; }
 
         [Column]
-        public decimal RETURNQTY { get; set; }
+        public decimal Unitqty { get; set; }
 
         [Column]
-        public string TAXITEMGROUP { get; set; }
+        public decimal Unitprice { get; set; }
 
         [Column]
-        public string ORIGINALTAXGROUP { get; set; }
+        public decimal Taxamount { get; set; }
 
         [Column]
-        public string ORIGINALTAXITEMGROUP { get; set; }
+        public decimal Totaldiscamount { get; set; }
 
         [Column]
-        public decimal NETAMOUNTINCLTAX { get; set; }
+        public decimal Totaldiscpct { get; set; }
 
         [Column]
-        public string INVENTLOCATIONID { get; set; }
+        public decimal Totaldiscinfocodelinenum { get; set; }
 
         [Column]
-        public string INVENTSITEID { get; set; }
+        public int Periodicdisctype { get; set; }
 
         [Column]
-        public string DLVMODE { get; set; }
+        public decimal Periodicdiscamount { get; set; }
 
         [Column]
-        public DateTime RECEIPTDATEREQUESTED { get; set; }
+        public decimal Discountamountforprinting { get; set; }
 
         [Column]
-        public DateTime SHIPPINGDATEREQUESTED { get; set; }
+        public string Staffid { get; set; }
 
         [Column]
-        public string LISTINGID { get; set; }
+        public string Periodicdiscgroup { get; set; }
 
         [Column]
-        public long LOGISTICSPOSTALADDRESS { get; set; }
+        public string Inventtransid { get; set; }
 
         [Column]
-        public decimal RETURNLINENUM { get; set; }
+        public string Inventdimid { get; set; }
 
         [Column]
-        public string RETURNSTORE { get; set; }
+        public string Purchid { get; set; }
 
         [Column]
-        public string RETURNTERMINALID { get; set; }
+        public string Filelogid { get; set; }
 
         [Column]
-        public long CHANNEL { get; set; }
+        public DateTime Modifieddate { get; set; }
+
+        [Column]
+        public int Modifiedtime { get; set; }
+
+        [Column]
+        public string Modifiedby { get; set; }
+
+        [Column]
+        public long Modifiedtransactionid { get; set; }
+
+        [Column]
+        public DateTime Createddate { get; set; }
+
+        [Column]
+        public int Createdtime { get; set; }
+
+        [Column]
+        public string Createdby { get; set; }
+
+        [Column]
+        public long Createdtransactionid { get; set; }
+
+        [Column(IsPrimaryKey = true)]
+        public string Dataareaid { get; set; }
+
+        [Column]
+        public string Prescriptionid { get; set; }
+
+        [Column]
+        public string Comment { get; set; }
+
+        [Column]
+        public decimal Linediscpct { get; set; }
+
+        [Column]
+        public decimal Wholediscamountwithtax { get; set; }
+
+        [Column]
+        public decimal Totaldiscamountwithtax { get; set; }
+
+        [Column]
+        public decimal Linediscamountwithtax { get; set; }
+
+        [Column]
+        public decimal Periodicdiscamountwithtax { get; set; }
+
+        [Column]
+        public string Inventbatchid { get; set; }
+
+        [Column]
+        public int Giftcard { get; set; }
+
+        [Column]
+        public string Inventserialid { get; set; }
+
+        [Column]
+        public string Rfidtagid { get; set; }
+
+        [Column]
+        public string Returntransactionid { get; set; }
+
+        [Column]
+        public decimal Returnqty { get; set; }
+
+        [Column]
+        public string Taxitemgroup { get; set; }
+
+        [Column]
+        public string Originaltaxgroup { get; set; }
+
+        [Column]
+        public string Originaltaxitemgroup { get; set; }
+
+        [Column]
+        public decimal Netamountincltax { get; set; }
+
+        [Column]
+        public string Inventlocationid { get; set; }
+
+        [Column]
+        public string Inventsiteid { get; set; }
+
+        [Column]
+        public string Dlvmode { get; set; }
+
+        [Column]
+        public DateTime Receiptdaterequested { get; set; }
+
+        [Column]
+        public DateTime Shippingdaterequested { get; set; }
+
+        [Column]
+        public string Listingid { get; set; }
+
+        [Column]
+        public long Logisticspostaladdress { get; set; }
+
+        [Column]
+        public decimal Returnlinenum { get; set; }
+
+        [Column]
+        public string Returnstore { get; set; }
+
+        [Column]
+        public string Returnterminalid { get; set; }
+
+        [Column]
+        public long Channel { get; set; }
 
     }
 }

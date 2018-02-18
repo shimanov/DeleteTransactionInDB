@@ -6,235 +6,235 @@ namespace DeleteTransactionInDB.Model
     [Table(Name = "RETAILTRANSACTIONTABLE")]
     public class Retailtransactiontable
     {
-        [Column(IsPrimaryKey = true)]
-        public string TRANSACTIONID { get; set; }
+        [Column(IsPrimaryKey = true, Name = "TRANSACTIONID")]
+        public string Transactionid { get; set; }
 
-        [Column]
+        [Column(Name = "TYPE")]
         public int Type { get; set; }
 
-        [Column]
-        public string RECEIPTID { get; set; }
+        [Column(Name = "RECEIPTID")]
+        public string Receiptid { get; set; }
 
-        [Column(IsPrimaryKey = true)]
-        public string STORE { get; set; }
+        [Column(IsPrimaryKey = true, Name = "STORE")]
+        public string Store { get; set; }
 
-        [Column(IsPrimaryKey = true)]
-        public string TERMINAL { get; set; }
+        [Column(IsPrimaryKey = true, Name = "TERMINAL")]
+        public string Terminal { get; set; }
 
-        [Column]
-        public string STAFF { get; set; }
+        [Column(Name = "STAFF")]
+        public string Staff { get; set; }
 
-        [Column]
-        public DateTime TRANSDATE { get; set; }
+        [Column(Name = "TRANSDATE")]
+        public DateTime Transdate { get; set; }
 
-        [Column]
-        public int TRANSTIME { get; set; }
+        [Column(Name = "TRANSTIME")]
+        public int Transtime { get; set; }
 
-        [Column]
-        public string SHIFT { get; set; }
+        [Column(Name = "SHIFT")]
+        public string Shift { get; set; }
 
-        [Column]
-        public DateTime SHIFTDATE { get; set; }
+        [Column(Name = "SHIFTDATE")]
+        public DateTime Shiftdate { get; set; }
 
-        [Column]
-        public int WRONGSHIFT { get; set; }
+        [Column(Name = "WRONGSHIFT")]
+        public int Wrongshift { get; set; }
 
-        [Column]
-        public string INFOCODEDISCGROUP { get; set; }
+        [Column(Name = "INFOCODEDISCGROUP")]
+        public string Infocodediscgroup { get; set; }
 
-        [Column]
-        public string CUSTACCOUNT { get; set; }
+        [Column(Name = "CUSTACCOUNT")]
+        public string Custaccount { get; set; }
 
-        [Column]
-        public int TRANSCODE { get; set; }
+        [Column(Name = "TRANSCODE")]
+        public int Transcode { get; set; }
 
-        [Column]
-        public decimal SALESPAYMENTDIFFERENCE { get; set; }
+        [Column(Name = "SALESPAYMENTDIFFERENCE")]
+        public decimal Salespaymentdifference { get; set; }
 
-        [Column]
-        public decimal NETAMOUNT { get; set; }
+        [Column(Name = "NETAMOUNT")]
+        public decimal Netamount { get; set; }
 
-        [Column]
-        public decimal COSTAMOUNT { get; set; }
+        [Column(Name = "COSTAMOUNT")]
+        public decimal Costamount { get; set; }
 
-        [Column]
-        public decimal GROSSAMOUNT { get; set; }
+        [Column(Name = "GROSSAMOUNT")]
+        public decimal Grossamount { get; set; }
 
-        [Column]
-        public decimal PAYMENTAMOUNT { get; set; }
+        [Column(Name = "PAYMENTAMOUNT")]
+        public decimal Paymentamount { get; set; }
 
-        [Column]
-        public decimal DISCAMOUNT { get; set; }
+        [Column(Name = "DISCAMOUNT")]
+        public decimal Discamount { get; set; }
 
-        [Column]
-        public decimal CUSTDISCAMOUNT { get; set; }
+        [Column(Name = "CUSTDISCAMOUNT")]
+        public decimal Custdiscamount { get; set; }
 
-        [Column]
-        public decimal TOTALDISCAMOUNT { get; set; }
+        [Column(Name = "TOTALDISCAMOUNT")]
+        public decimal Totaldiscamount { get; set; }
 
-        [Column]
-        public decimal NUMBEROFITEMS { get; set; }
+        [Column(Name = "NUMBEROFITEMS")]
+        public decimal Numberofitems { get; set; }
 
-        [Column]
-        public decimal AMOUNTTOACCOUNT { get; set; }
+        [Column(Name = "AMOUNTTOACCOUNT")]
+        public decimal Amounttoaccount { get; set; }
 
-        [Column]
-        public decimal ROUNDEDAMOUNT { get; set; }
+        [Column(Name = "ROUNDEDAMOUNT")]
+        public decimal Roundedamount { get; set; }
 
-        [Column]
-        public int ENTRYSTATUS { get; set; }
+        [Column(Name = "ENTRYSTATUS")]
+        public int Entrystatus { get; set; }
 
-        [Column]
-        public int NUMBEROFINVOICES { get; set; }
+        [Column(Name = "NUMBEROFINVOICES")]
+        public int Numberofinvoices { get; set; }
 
-        [Column]
-        public decimal NUMBEROFITEMLINES { get; set; }
+        [Column(Name = "NUMBEROFITEMLINES")]
+        public decimal Numberofitemlines { get; set; }
 
-        [Column]
-        public string STATEMENTCODE { get; set; }
+        [Column(Name = "STATEMENTCODE")]
+        public string Statementcode { get; set; }
 
-        [Column]
-        public string STATEMENTID { get; set; }
+        [Column(Name = "STATEMENTID")]
+        public string Statementid { get; set; }
 
-        [Column]
-        public string REFUNDRECEIPTID { get; set; }
+        [Column(Name = "REFUNDRECEIPTID")]
+        public string Refundreceiptid { get; set; }
 
-        [Column]
-        public decimal INCOMEEXPENSEAMOUNT { get; set; }
+        [Column(Name = "INCOMEEXPENSEAMOUNT")]
+        public decimal Incomeexpenseamount { get; set; }
 
-        [Column]
-        public int TOACCOUNT { get; set; }
+        [Column(Name = "TOACCOUNT")]
+        public int Toaccount { get; set; }
 
-        [Column]
-        public int NUMBEROFPAYMENTLINES { get; set; }
+        [Column(Name = "NUMBEROFPAYMENTLINES")]
+        public int Numberofpaymentlines { get; set; }
 
-        [Column]
-        public int SALEISRETURNSALE { get; set; }
+        [Column(Name = "SALEISRETURNSALE")]
+        public int Saleisreturnsale { get; set; }
 
-        [Column]
-        public int COUNTER { get; set; }
+        [Column(Name = "COUNTER")]
+        public int Counter { get; set; }
 
-        [Column]
-        public int TIMEWHENTOTALPRESSED { get; set; }
+        [Column(Name = "TIMEWHENTOTALPRESSED")]
+        public int Timewhentotalpressed { get; set; }
 
-        [Column]
-        public int TIMEWHENTRANSCLOSED { get; set; }
+        [Column(Name = "TIMEWHENTRANSCLOSED")]
+        public int Timewhentransclosed { get; set; }
 
-        [Column]
-        public string CURRENCY { get; set; }
+        [Column(Name = "CURRENCY")]
+        public string Currency { get; set; }
 
-        [Column]
-        public int TRANSTABLEID { get; set; }
+        [Column(Name = "TRANSTABLEID")]
+        public int Transtableid { get; set; }
 
-        [Column]
-        public int OPENDRAWER { get; set; }
+        [Column(Name = "OPENDRAWER")]
+        public int Opendrawer { get; set; }
 
-        [Column]
-        public int REPLICATED { get; set; }
+        [Column(Name = "REPLICATED")]
+        public int Replicated { get; set; }
 
-        [Column]
-        public int REPLICATIONCOUNTER { get; set; }
+        [Column(Name = "REPLICATIONCOUNTER")]
+        public int Replicationcounter { get; set; }
 
-        [Column]
-        public int INCLUDEDINSTATISTICS { get; set; }
+        [Column(Name = "INCLUDEDINSTATISTICS")]
+        public int Includedinstatistics { get; set; }
 
-        [Column]
-        public string RETRIEVEDFROMRECEIPTID { get; set; }
+        [Column(Name = "RETRIEVEDFROMRECEIPTID")]
+        public string Retrievedfromreceiptid { get; set; }
 
-        [Column]
-        public string CREATEDONPOSTERMINAL { get; set; }
+        [Column(Name = "CREATEDONPOSTERMINAL")]
+        public string Createdonposterminal { get; set; }
 
-        [Column]
-        public int POSTASSHIPMENT { get; set; }
+        [Column(Name = "POSTASSHIPMENT")]
+        public int Postasshipment { get; set; }
 
-        [Column]
-        public int ITEMSPOSTED { get; set; }
+        [Column(Name = "ITEMSPOSTED")]
+        public int Itemsposted { get; set; }
 
-        [Column]
-        public DateTime MODIFIEDDATE { get; set; }
+        [Column(Name = "MODIFIEDDATE")]
+        public DateTime Modifieddate { get; set; }
 
-        [Column]
-        public int MODIFIEDTIME { get; set; }
+        [Column(Name = "MODIFIEDTIME")]
+        public int Modifiedtime { get; set; }
 
-        [Column]
-        public string MODIFIEDBY { get; set; }
+        [Column(Name = "MODIFIEDBY")]
+        public string Modifiedby { get; set; }
 
-        [Column]
-        public DateTime CREATEDDATE { get; set; }
+        [Column(Name = "CREATEDDATE")]
+        public DateTime Createddate { get; set; }
 
-        [Column]
-        public int CREATEDTIME { get; set; }
+        [Column(Name = "CREATEDTIME")]
+        public int Createdtime { get; set; }
 
-        [Column]
-        public string CREATEDBY { get; set; }
+        [Column(Name = "CREATEDBY")]
+        public string Createdby { get; set; }
 
-        [Column(IsPrimaryKey = true)]
-        public string DATAAREAID { get; set; }
+        [Column(IsPrimaryKey = true, Name = "DATAAREAID")]
+        public string Dataareaid { get; set; }
 
-        [Column]
-        public string DESCRIPTION { get; set; }
+        [Column(Name = "DESCRIPTION")]
+        public string Description { get; set; }
 
-        [Column]
-        public string CUSTPURCHASEORDER { get; set; }
+        [Column(Name = "CUSTPURCHASEORDER")]
+        public string Custpurchaseorder { get; set; }
 
-        [Column]
-        public string COMMENT { get; set; }
+        [Column(Name = "COMMENT")]
+        public string Comment { get; set; }
 
-        [Column]
-        public string INVOICECOMMENT { get; set; }
+        [Column(Name = "INVOICECOMMENT")]
+        public string Invoicecomment { get; set; }
 
-        [Column]
-        public decimal SALESORDERAMOUNT { get; set; }
+        [Column(Name = "SALESORDERAMOUNT")]
+        public decimal Salesorderamount { get; set; }
 
-        [Column]
-        public decimal SALESINVOICEAMOUNT { get; set; }
+        [Column(Name = "SALESINVOICEAMOUNT")]
+        public decimal Salesinvoiceamount { get; set; }
 
-        [Column]
-        public string RECEIPTEMAIL { get; set; }
+        [Column(Name = "RECEIPTEMAIL")]
+        public string Receiptemail { get; set; }
 
-        [Column]
-        public decimal EXCHRATE { get; set; }
+        [Column(Name = "EXCHRATE")]
+        public decimal Exchrate { get; set; }
 
-        [Column]
-        public string BATCHTERMINALID { get; set; }
+        [Column(Name = "BATCHTERMINALID")]
+        public string Batchterminalid { get; set; }
 
-        [Column]
-        public long BATCHID { get; set; }
+        [Column(Name = "BATCHID")]
+        public long Batchid { get; set; }
 
-        [Column]
-        public string FISCALSERIALID { get; set; }
+        [Column(Name = "FISCALSERIALID")]
+        public string Fiscalserialid { get; set; }
 
-        [Column]
-        public string FISCALDOCUMENTID { get; set; }
+        [Column(Name = "FISCALDOCUMENTID")]
+        public string Fiscaldocumentid { get; set; }
 
-        [Column]
-        public int CREATEDOFFLINE { get; set; }
+        [Column(Name = "CREATEDOFFLINE")]
+        public int Createdoffline { get; set; }
 
-        [Column]
-        public string INVENTLOCATIONID { get; set; }
+        [Column(Name = "INVENTLOCATIONID")]
+        public string Inventlocationid { get; set; }
 
-        [Column]
-        public string INVENTSITEID { get; set; }
+        [Column(Name = "INVENTSITEID")]
+        public string Inventsiteid { get; set; }
 
-        [Column]
-        public string DLVMODE { get; set; }
+        [Column(Name = "DLVMODE")]
+        public string Dlvmode { get; set; }
 
-        [Column]
-        public DateTime RECEIPTDATEREQUESTED { get; set; }
+        [Column(Name = "RECEIPTDATEREQUESTED")]
+        public DateTime Receiptdaterequested { get; set; }
 
-        [Column]
-        public DateTime SHIPPINGDATEREQUESTED { get; set; }
+        [Column(Name = "SHIPPINGDATEREQUESTED")]
+        public DateTime Shippingdaterequested { get; set; }
 
-        [Column]
-        public string CHANNELREFERENCEID { get; set; }
+        [Column(Name = "CHANNELREFERENCEID")]
+        public string Channelreferenceid { get; set; }
 
-        [Column]
-        public long LOGISTICSPOSTALADDRESS { get; set; }
+        [Column(Name = "LOGISTICSPOSTALADDRESS")]
+        public long Logisticspostaladdress { get; set; }
 
-        [Column]
-        public long CHANNEL { get; set; }
+        [Column(Name = "CHANNEL")]
+        public long Channel { get; set; }
 
-        [Column]
-        public string SALESORDERID { get; set; }
+        [Column(Name = "SALESORDERID")]
+        public string Salesorderid { get; set; }
     }
 }
