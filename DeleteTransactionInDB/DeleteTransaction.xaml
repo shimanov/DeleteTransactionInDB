@@ -17,18 +17,19 @@
                  ToolTip="Введите номер зависшей проводки из 'Сверки транзакций'"
                  BorderThickness="2"
                  BorderBrush="Black"/>
-        <Button x:Name="searchBtn" Height="50" Width="350" Margin="0,92,0,271" Click="searchBtn_Click">Поиск транзакции</Button>
-        <ListView x:Name="resultLst" VerticalContentAlignment="Bottom" Margin="0,147,0,60" Width="580">
+        <Button x:Name="SearchBtn" Height="50" Width="350" Margin="122,98,121.6,272"
+                BorderThickness="1" Click="SearchBtn_Click">Поиск транзакции</Button>
+        <ListView x:Name="ResultLst" VerticalContentAlignment="Bottom" Margin="7,164,6.6,60" Width="580">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding RECEIPTID}"/>
-                    <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding TERMINAL}"/>
-                    <GridViewColumn Header="Дата создания" Width="170" DisplayMemberBinding="{Binding CREATEDDATE}" />
-                    <GridViewColumn Header="Сумма" Width="170" DisplayMemberBinding="{Binding PAYMENTAMOUNT}" />
+                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding Receiptid}"/>
+                    <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding Terminal}"/>
+                    <GridViewColumn Header="Дата создания" Width="170" DisplayMemberBinding="{Binding Createddate}" />
+                    <GridViewColumn Header="Сумма" Width="170" DisplayMemberBinding="{Binding Paymentamount}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="deleteBtn" Height="50" Width="350" 
+        <Button x:Name="DeleteBtn" Height="50" Width="350" 
                 VerticalAlignment="Bottom" Margin="0,0,0,5" 
                 Click="deleteBtn_Click" Visibility="Hidden">Удалить транзакцию</Button>
     </Grid>

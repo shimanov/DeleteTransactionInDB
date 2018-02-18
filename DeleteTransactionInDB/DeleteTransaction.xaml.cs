@@ -1,7 +1,9 @@
-﻿using DeleteTransactionInDB.Model;
+﻿using System;
+using DeleteTransactionInDB.Model;
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +14,15 @@ namespace DeleteTransactionInDB
     /// </summary>
     public partial class DeleteTransaction : Window
     {
-        static string _connectionString = @"Data Source=R54-633203-N; Initial Catalog=DB633203; user id=sa;password=Admin123";
+        public static string DbName()
+        {
+            string pcName = Environment.MachineName.ToLower();
+            string[] zipCode = pcName.Split('-');
+
+            return "DB" + zipCode[1];
+        }
+
+        static string _connectionString = @"Data Source=localhost; Initial Catalog=" + DbName() + "; user id=sa;password=Admin123";
         DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()
@@ -20,17 +30,21 @@ namespace DeleteTransactionInDB
             InitializeComponent();
         }
 
-        private void searchBtn_Click(object sender, RoutedEventArgs e)
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             if (numberTbx.Text != string.Empty)
             {
-                var result = _dataContext.GetTable<Retailtransactiontable>()
-                .ToList()
-                .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
+                Regex regex = new Regex("^[а-яА-ЯёЁ0-9]+$ ", RegexOptions.IgnoreCase);
+                Match match = regex.Match(numberTbx.Text);
+                if (match.Success)
+                {
+                    var result = _dataContext.GetTable<Retailtransactiontable>()
+                        .ToList()
+                        .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
 
                     foreach (var item in result)
                     {
-                        resultLst.Items.Add(new Retailtransactiontable
+                        ResultLst.Items.Add(new Retailtransactiontable
                         {
                             //Номер транзакции
                             Receiptid = item.Receiptid,
@@ -42,7 +56,12 @@ namespace DeleteTransactionInDB
                             Paymentamount = item.Paymentamount
                         });
                     }
-                deleteBtn.Visibility = Visibility.Visible;
+                    DeleteBtn.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MessageBox.Show("!!!!");
+                }
             }
             else
             {
@@ -61,7 +80,7 @@ namespace DeleteTransactionInDB
             {
                 _dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
                 _dataContext.SubmitChanges();
-                resultLst.Items.Clear();
+                ResultLst.Items.Clear();
                 MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
             }
             else
