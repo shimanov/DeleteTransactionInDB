@@ -5,32 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeleteTransactionInDB"
         mc:Ignorable="d"
-        Title="DeleteTransaction" Height="450" Width="600"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
-    <Grid ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        Title="Удаление транзакции с номером" Height="458" Width="567"
+        WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" >
+    <Grid>
         <Label VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5,5,5,10" FontSize="20">Введите номер зависшей транзакции</Label>
         <TextBox x:Name="numberTbx" HorizontalAlignment="Stretch" Height="40" 
-                 Margin="10,47,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Margin="38.25,47,38.25,0" TextWrapping="Wrap" VerticalAlignment="Top"
                  TextAlignment="Center" 
                  FontSize="25"
                  ToolTip="Введите номер зависшей проводки из 'Сверки транзакций'"
                  BorderThickness="2"
                  BorderBrush="Black"/>
-        <Button x:Name="SearchBtn" Height="50" Width="350" Margin="122,98,121.6,272"
-                BorderThickness="1" Click="SearchBtn_Click">Поиск транзакции</Button>
-        <ListView x:Name="ResultLst" VerticalContentAlignment="Bottom" Margin="7,164,6.6,60" Width="580">
+        <Button x:Name="SearchBtn" Height="50" Width="350" Margin="104,95,0,0"
+                BorderThickness="1" Click="SearchBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" >Поиск транзакции</Button>
+        <ListView x:Name="ResultLst" VerticalContentAlignment="Bottom" Margin="10,172,10,60">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding Receiptid}"/>
-                    <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding Terminal}"/>
-                    <GridViewColumn Header="Дата создания" Width="170" DisplayMemberBinding="{Binding Createddate}" />
-                    <GridViewColumn Header="Сумма" Width="170" DisplayMemberBinding="{Binding Paymentamount}" />
+                    <GridViewColumn Header="Номер транзакции" Width="120" DisplayMemberBinding="{Binding Receiptid, IsAsync=True}"/>
+                    <GridViewColumn Header="Номер окна" Width="100" DisplayMemberBinding="{Binding Terminal, IsAsync=True}"/>
+                    <GridViewColumn Header="Дата создания" Width="150" DisplayMemberBinding="{Binding Createddate, IsAsync=True}" />
+                    <GridViewColumn Header="Сумма" Width="145" DisplayMemberBinding="{Binding Paymentamount, IsAsync=True}" />
                 </GridView>
             </ListView.View>
         </ListView>
         <Button x:Name="DeleteBtn" Height="50" Width="350" 
-                VerticalAlignment="Bottom" Margin="0,0,0,5" 
-                Click="deleteBtn_Click" Visibility="Hidden">Удалить транзакцию</Button>
+                VerticalAlignment="Bottom" Margin="104,0,0,5" 
+                Click="deleteBtn_Click" HorizontalAlignment="Left" Visibility="Hidden">Удалить транзакцию</Button>
+        <ProgressBar x:Name="Progressbar" HorizontalAlignment="Left" Height="13" Margin="38,152,0,0" VerticalAlignment="Top" Width="485" Visibility="Hidden"/>
     </Grid>
 </Window>

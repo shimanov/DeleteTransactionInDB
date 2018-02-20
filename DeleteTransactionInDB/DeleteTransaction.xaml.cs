@@ -1,11 +1,9 @@
 ﻿using System;
 using DeleteTransactionInDB.Model;
-using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
+using System.Threading.Tasks;
 
 namespace DeleteTransactionInDB
 {
@@ -14,15 +12,16 @@ namespace DeleteTransactionInDB
     /// </summary>
     public partial class DeleteTransaction : Window
     {
-        public static string DbName()
-        {
-            string pcName = Environment.MachineName.ToLower();
-            string[] zipCode = pcName.Split('-');
+        //public static string DbName()
+        //{
+        //    string pcName = Environment.MachineName.ToLower();
+        //    string[] zipCode = pcName.Split('-');
 
-            return "DB" + zipCode[1];
-        }
+        //    return "DB" + zipCode[1];
+        //}
 
-        static string _connectionString = @"Data Source=localhost; Initial Catalog=" + DbName() + "; user id=sa;password=Admin123";
+        //static string _connectionString = @"Data Source=localhost; Initial Catalog=DB633009" + DbName() + "; user id=sa;password=QweAsd123";
+        static string _connectionString = @"Data Source=r54-633009-n; Initial Catalog=DB633009; user id=sa;password=QweAsd123";
         DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()
@@ -30,38 +29,35 @@ namespace DeleteTransactionInDB
             InitializeComponent();
         }
 
-        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        private async void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             if (numberTbx.Text != string.Empty)
             {
-                Regex regex = new Regex("^[а-яА-ЯёЁ0-9]+$ ", RegexOptions.IgnoreCase);
-                Match match = regex.Match(numberTbx.Text);
-                if (match.Success)
-                {
-                    var result = _dataContext.GetTable<Retailtransactiontable>()
-                        .ToList()
-                        .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
+                Progressbar.Visibility = Visibility.Visible;
+                Progressbar.IsIndeterminate = true;
+                SearchBtn.Opacity = 0.2;
+                await Serach();
+                
 
-                    foreach (var item in result)
-                    {
-                        ResultLst.Items.Add(new Retailtransactiontable
-                        {
-                            //Номер транзакции
-                            Receiptid = item.Receiptid,
-                            //Номер терминала
-                            Terminal = item.Terminal,
-                            //Дата создания
-                            Createddate = item.Createddate,
-                            //Сумма платежа
-                            Paymentamount = item.Paymentamount
-                        });
-                    }
-                    DeleteBtn.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    MessageBox.Show("!!!!");
-                }
+                    //var result = _dataContext.GetTable<Retailtransactiontable>()
+                    //    .ToList()
+                    //    .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
+
+                    //foreach (var item in result)
+                    //{
+                    //    ResultLst.Items.Add(new Retailtransactiontable
+                    //    {
+                    //        //Номер транзакции
+                    //        Receiptid = item.Receiptid,
+                    //        //Номер терминала
+                    //        Terminal = item.Terminal,
+                    //        //Дата создания
+                    //        Createddate = item.Createddate,
+                    //        //Сумма платежа
+                    //        Paymentamount = item.Paymentamount
+                    //    });
+                    //}
+                    //DeleteBtn.Visibility = Visibility.Visible;
             }
             else
             {
@@ -88,5 +84,33 @@ namespace DeleteTransactionInDB
                 MessageBox.Show("Транзакция не удалена");
             }
         }
+
+        public async Task Serach()
+        {
+            var result = await Task.Run(() => _dataContext.GetTable<Retailtransactiontable>()
+                            .ToList()
+                            .Where(r => r.Receiptid == numberTbx.Text));   //"Прод092765"
+
+            foreach (var item in result)
+            {
+                ResultLst.Items.Add(new Retailtransactiontable
+                {
+                    //Номер транзакции
+                    Receiptid = item.Receiptid,
+                    //Номер терминала
+                    Terminal = item.Terminal,
+                    //Дата создания
+                    Createddate = item.Createddate,
+                    //Сумма платежа
+                    Paymentamount = item.Paymentamount
+                });
+            }
+            Progressbar.IsIndeterminate = false;
+            Progressbar.Visibility = Visibility.Hidden;
+            SearchBtn.Opacity = 1;
+            DeleteBtn.Visibility = Visibility.Visible;
+        }
     }
+
+    
 }
