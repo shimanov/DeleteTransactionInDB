@@ -77,6 +77,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DeleteTransactionWithoutNuber.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Include="DeleteTransaction.xaml.cs">
       <DependentUpon>DeleteTransaction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteTransactionWithoutNuber.xaml.cs">
+      <DependentUpon>DeleteTransactionWithoutNuber.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

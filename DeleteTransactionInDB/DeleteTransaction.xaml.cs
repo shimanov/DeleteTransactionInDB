@@ -12,16 +12,16 @@ namespace DeleteTransactionInDB
     /// </summary>
     public partial class DeleteTransaction : Window
     {
-        //public static string DbName()
-        //{
-        //    string pcName = Environment.MachineName.ToLower();
-        //    string[] zipCode = pcName.Split('-');
+        public static string DbName()
+        {
+            string pcName = Environment.MachineName.ToLower();
+            string[] zipCode = pcName.Split('-');
 
-        //    return "DB" + zipCode[1];
-        //}
+            return "DB" + zipCode[1];
+        }
 
-        //static string _connectionString = @"Data Source=localhost; Initial Catalog=DB633009" + DbName() + "; user id=sa;password=QweAsd123";
-        static string _connectionString = @"Data Source=r54-633009-n; Initial Catalog=DB633009; user id=sa;password=QweAsd123";
+        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";user id=srvcEASOPSupdate;password=QYF51jRvsk";
+        //static string _connectionString = @"Data Source=r54-633009-n;Initial Catalog=DB633009;User Id=sa;password=QweAsd123";
         DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()
@@ -37,27 +37,6 @@ namespace DeleteTransactionInDB
                 Progressbar.IsIndeterminate = true;
                 SearchBtn.Opacity = 0.2;
                 await Serach();
-                
-
-                    //var result = _dataContext.GetTable<Retailtransactiontable>()
-                    //    .ToList()
-                    //    .Where(r => r.Receiptid == numberTbx.Text); //"Прод092765"
-
-                    //foreach (var item in result)
-                    //{
-                    //    ResultLst.Items.Add(new Retailtransactiontable
-                    //    {
-                    //        //Номер транзакции
-                    //        Receiptid = item.Receiptid,
-                    //        //Номер терминала
-                    //        Terminal = item.Terminal,
-                    //        //Дата создания
-                    //        Createddate = item.Createddate,
-                    //        //Сумма платежа
-                    //        Paymentamount = item.Paymentamount
-                    //    });
-                    //}
-                    //DeleteBtn.Visibility = Visibility.Visible;
             }
             else
             {
