@@ -20,7 +20,7 @@ namespace DeleteTransactionInDB
             return "DB" + zipCode[1];
         }
 
-        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";user id=srvcEASOPSupdate;password=QYF51jRvsk";
+        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI";
         //static string _connectionString = @"Data Source=r54-633009-n;Initial Catalog=DB633009;User Id=sa;password=QweAsd123";
         DataContext _dataContext = new DataContext(_connectionString);
 
@@ -66,28 +66,37 @@ namespace DeleteTransactionInDB
 
         public async Task Serach()
         {
-            var result = await Task.Run(() => _dataContext.GetTable<Retailtransactiontable>()
+            try
+            {
+                var result = await Task.Run(() => _dataContext.GetTable<Retailtransactiontable>()
                             .ToList()
                             .Where(r => r.Receiptid == numberTbx.Text));   //"Прод092765"
 
-            foreach (var item in result)
-            {
-                ResultLst.Items.Add(new Retailtransactiontable
+                foreach (var item in result)
                 {
-                    //Номер транзакции
-                    Receiptid = item.Receiptid,
-                    //Номер терминала
-                    Terminal = item.Terminal,
-                    //Дата создания
-                    Createddate = item.Createddate,
-                    //Сумма платежа
-                    Paymentamount = item.Paymentamount
-                });
+                    ResultLst.Items.Add(new Retailtransactiontable
+                    {
+                        //Номер транзакции
+                        Receiptid = item.Receiptid,
+                        //Номер терминала
+                        Terminal = item.Terminal,
+                        //Дата создания
+                        Createddate = item.Createddate,
+                        //Сумма платежа
+                        Paymentamount = item.Paymentamount
+                    });
+                }
+                Progressbar.IsIndeterminate = false;
+                Progressbar.Visibility = Visibility.Hidden;
+                SearchBtn.Opacity = 1;
+                DeleteBtn.Visibility = Visibility.Visible;
             }
-            Progressbar.IsIndeterminate = false;
-            Progressbar.Visibility = Visibility.Hidden;
-            SearchBtn.Opacity = 1;
-            DeleteBtn.Visibility = Visibility.Visible;
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+            
         }
     }
 
