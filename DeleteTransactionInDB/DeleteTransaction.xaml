@@ -15,7 +15,7 @@
                  FontSize="25"
                  ToolTip="Введите номер зависшей проводки из 'Сверки транзакций'"
                  BorderThickness="2"
-                 BorderBrush="Black"/>
+                 BorderBrush="Black" TextChanged="numberTbx_TextChanged" Focusable="True"/>
         <Button x:Name="SearchBtn" Height="50" Width="350" Margin="104,95,0,0"
                 BorderThickness="1" Click="SearchBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" >Поиск транзакции</Button>
         <ListView x:Name="ResultLst" VerticalContentAlignment="Bottom" Margin="10,172,10,60">
@@ -30,7 +30,7 @@
         </ListView>
         <Button x:Name="DeleteBtn" Height="50" Width="350" 
                 VerticalAlignment="Bottom" Margin="104,0,0,5" 
-                Click="deleteBtn_Click" HorizontalAlignment="Left" Visibility="Hidden">Удалить транзакцию</Button>
+                Click="deleteBtn_Click" HorizontalAlignment="Left" Visibility="Hidden" FontSize="20">Удалить транзакцию</Button>
         <ProgressBar x:Name="Progressbar" HorizontalAlignment="Left" Height="13" Margin="38,152,0,0" VerticalAlignment="Top" Width="485" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace DeleteTransactionInDB
         }
 
         static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI";
-        //static string _connectionString = @"Data Source=r54-633009-n;Initial Catalog=DB633009;User Id=sa;password=QweAsd123";
+        
         DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()
@@ -56,6 +56,7 @@ namespace DeleteTransactionInDB
                 _dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
                 _dataContext.SubmitChanges();
                 ResultLst.Items.Clear();
+                numberTbx.Text = string.Empty;
                 MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
             }
             else
@@ -70,7 +71,7 @@ namespace DeleteTransactionInDB
             {
                 var result = await Task.Run(() => _dataContext.GetTable<Retailtransactiontable>()
                             .ToList()
-                            .Where(r => r.Receiptid == numberTbx.Text));   //"Прод092765"
+                            .Where(r => r.Receiptid == numberTbx.Text));
 
                 foreach (var item in result)
                 {
@@ -97,6 +98,25 @@ namespace DeleteTransactionInDB
                 MessageBox.Show(e.ToString());
             }
             
+        }
+
+        int i = 0;
+        private void numberTbx_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            
+            i++;
+            if (i == 1)
+            {
+                numberTbx.Text = numberTbx.Text[0].ToString().ToUpper();
+            }
+            else
+            {
+                numberTbx.SelectionStart = numberTbx.Text.Length;
+            }
+            //if (numberTbx.Text.Length ==0)
+            //{
+            //    i = 0;
+            //}
         }
     }
 

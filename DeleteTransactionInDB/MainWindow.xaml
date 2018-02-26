@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         Title="Удаление зависших транзакций" Height="250" Width="500" 
         WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Label VerticalAlignment="Top" Height="40" Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="20">Удаление зависших транзакций</Label>
-        <Button x:Name="withNumber" Margin="-6,64,0,113" Height="50" 
-                VerticalAlignment="Center" 
-                FontSize="20" HorizontalAlignment="Center" Width="450" Click="withNumber_Click">
+        <Button x:Name="withNumber" Margin="19,0,25,79" Height="50" 
+                VerticalAlignment="Bottom" 
+                FontSize="20" Click="withNumber_Click">
             Удаление зависшей транзакции с номером
         </Button>
         <Button x:Name="withoutNumber" Margin="0,0,0,-100" HorizontalAlignment="Center" 
                 Width="450" Height="50" 
                 VerticalAlignment="Center" 
-                FontSize="20">
+                FontSize="20" Visibility="Collapsed">
             Удаление зависшей транзакции без номера
         </Button>
     </Grid>
