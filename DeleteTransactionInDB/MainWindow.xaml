@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeleteTransactionInDB"
         mc:Ignorable="d"
-        Title="Удаление зависших транзакций" Height="250" Width="500" 
+        Title="Удаление зависших транзакций v.0.5.0.0" Height="250" Width="500" 
         WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen">
     <Grid>
