@@ -18,15 +18,5 @@ namespace DeleteTransactionInDB
             DeleteTransaction deleteTransaction = new DeleteTransaction();
             deleteTransaction.Show();
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!Directory.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Почтовское говно"))
-            {
-                Directory.CreateDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Почтовское говно");
-            }
-
-
-        }
     }
 }

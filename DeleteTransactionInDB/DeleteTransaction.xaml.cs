@@ -20,8 +20,8 @@ namespace DeleteTransactionInDB
             return "DB" + zipCode[1];
         }
 
-        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI";
-        
+        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI;Trusted_Connection=true;";
+
         DataContext _dataContext = new DataContext(_connectionString);
 
         public DeleteTransaction()

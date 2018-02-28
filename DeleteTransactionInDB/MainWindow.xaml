@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Удаление зависших транзакций" Height="250" Width="500" 
         WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label VerticalAlignment="Top" Height="40" Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="20">Удаление зависших транзакций</Label>
         <Button x:Name="withNumber" Margin="19,0,25,79" Height="50" 
