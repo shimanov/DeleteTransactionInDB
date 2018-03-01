@@ -4,6 +4,7 @@ using System.Data.Linq;
 using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
+using log4net;
 
 namespace DeleteTransactionInDB
 {
@@ -12,7 +13,10 @@ namespace DeleteTransactionInDB
     /// </summary>
     public partial class DeleteTransaction : Window
     {
-        public static string DbName()
+        private static readonly ILog Log = LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static string DbName()
         {
             string pcName = Environment.MachineName.ToLower();
             string[] zipCode = pcName.Split('-');
@@ -20,9 +24,9 @@ namespace DeleteTransactionInDB
             return "DB" + zipCode[1];
         }
 
-        static string _connectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI;Trusted_Connection=true;";
+        private static readonly string ConnectionString = @"Data Source=localhost;Initial Catalog=" + DbName() + ";Integrated Security = SSPI;Trusted_Connection=true;";
 
-        DataContext _dataContext = new DataContext(_connectionString);
+        readonly DataContext _dataContext = new DataContext(ConnectionString);
 
         public DeleteTransaction()
         {
@@ -42,7 +46,6 @@ namespace DeleteTransactionInDB
             {
                 MessageBox.Show("Не введен номер зависшей транзакции");
             }
-            
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -51,30 +54,26 @@ namespace DeleteTransactionInDB
                 .ToList()
                 .Where(r => r.Receiptid == numberTbx.Text);
 
-            if (result != null)
-            {
-                _dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
-                _dataContext.SubmitChanges();
-                ResultLst.Items.Clear();
-                numberTbx.Text = string.Empty;
-                MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
-            }
-            else
-            {
-                MessageBox.Show("Транзакция не удалена");
-            }
+            _dataContext.GetTable<Retailtransactiontable>().DeleteAllOnSubmit(result);
+            _dataContext.SubmitChanges();
+            Log.Info($"Удалена транзакция: {numberTbx.Text}");
+            ResultLst.Items.Clear();
+            numberTbx.Text = string.Empty;
+            MessageBox.Show("Транзакция удалена!\n Перезайдите в сверку транзакций.");
         }
 
-        public async Task Serach()
+        private async Task Serach()
         {
             try
             {
                 var result = await Task.Run(() => _dataContext.GetTable<Retailtransactiontable>()
-                            .ToList()
-                            .Where(r => r.Receiptid == numberTbx.Text));
+                    .ToList()
+                    .Where(r => r.Receiptid == numberTbx.Text));
+                Log.Info("Найдена транзакция:");
 
                 foreach (var item in result)
                 {
+                    Log.Info($"Номер транзакции: {item.Receiptid}, Номер терминала: {item.Terminal}, Дата создания: {item.Createddate}, Сумма: {item.Paymentamount}");
                     ResultLst.Items.Add(new Retailtransactiontable
                     {
                         //Номер транзакции
@@ -87,6 +86,7 @@ namespace DeleteTransactionInDB
                         Paymentamount = item.Paymentamount
                     });
                 }
+
                 Progressbar.IsIndeterminate = false;
                 Progressbar.Visibility = Visibility.Hidden;
                 SearchBtn.Opacity = 1;
@@ -94,18 +94,16 @@ namespace DeleteTransactionInDB
             }
             catch (Exception e)
             {
-
                 MessageBox.Show(e.ToString());
             }
-            
         }
 
-        int i = 0;
+        private int _i;
+
         private void numberTbx_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            
-            i++;
-            if (i == 1)
+            _i++;
+            if (_i == 1)
             {
                 numberTbx.Text = numberTbx.Text[0].ToString().ToUpper();
             }
@@ -113,12 +111,6 @@ namespace DeleteTransactionInDB
             {
                 numberTbx.SelectionStart = numberTbx.Text.Length;
             }
-            //if (numberTbx.Text.Length ==0)
-            //{
-            //    i = 0;
-            //}
         }
     }
-
-    
 }
